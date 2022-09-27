@@ -1,0 +1,28 @@
+apiVersion: kubedb.com/v1alpha1
+kind: MongoDB
+metadata:
+  name: recovered-mongodb-nguyen-thanh-son-production
+  namespace: gwmt-production
+  labels:
+    stack: nguyen-thanh-son
+    app: mongodb
+    tier: db
+    environment: production
+spec:
+  version: "4.1.7-v1"
+  storageType: Durable
+  doNotPause: true
+  storage:
+    storageClassName: "ceph-rbd"
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+  databaseSecret:
+    secretName: mongodb-nguyen-thanh-son-production-auth
+  init:
+    snapshotSource:
+      name: {kubectl get snap}
+      namespace: gwmt-production
+  terminationPolicy: WipeOut

@@ -1,0 +1,35 @@
+apiVersion: kubedb.com/v1alpha1
+kind: MongoDB
+metadata:
+  name: mongodb-nguyen-thanh-son-production
+  namespace: gwmt-production
+  labels:
+    stack: nguyen-thanh-son
+    app: mongodb
+    tier: db
+    environment: production
+spec:
+  version: "4.1.7-v1"
+  storageType: Durable
+  doNotPause: true
+  storage:
+    storageClassName: "ceph-rbd"
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+  podTemplate:
+    spec:
+      resources:
+        requests:
+          memory: "1G"
+        limits:
+          memory: "1G"  
+  backupSchedule:
+    cronExpression: "0 0 0 * * *"
+    local:
+      mountPath: /mongodb-snapshots
+      persistentVolumeClaim:
+        claimName: pvc-backup-nguyen-thanh-son-production
+  terminationPolicy: DoNotTerminate
