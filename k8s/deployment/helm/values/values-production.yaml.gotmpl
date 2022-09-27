@@ -1,0 +1,55 @@
+replicaCount: 3
+
+image:
+  repository: {{ requiredEnv "CI_REGISTRY_IMAGE" }}/{{ requiredEnv "APP_LABEL" }}
+  tag: {{ requiredEnv "DOCKER_IMAGE_TAG" }}
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: {{ requiredEnv "GITLAB_PULL_SECRET" }}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+      kubernetes.io/ingress.class: gwmt-external
+  hosts:
+    - host: {{ requiredEnv "INGRESS_HOST" }}
+      paths: [/]
+  tls: []
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+
+# This is the hard limit for the applications (like a normal VM)
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+  #This values help K8S to schedule the container on machines that have enought free ressources, try to give a value close as possible of the normal resource consumtion.
+  # If thoses values are too high you allocate too much resource for the application, too low you risk to put the machine under pressure (combined with others applications with too low requests)
+  # The difference beween limits and requests equal the allowed burst for those container
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+affinity:
+  # Try to not schedule two pods on the same node (physical)
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ requiredEnv "APP_LABEL" }}
+              app.kubernetes.io/instance: {{ requiredEnv "APP_LABEL" }}-{{ requiredEnv "HELMFILE_ENV" }}
+          topologyKey: kubernetes.io/hostname
+        weight: 100
+env:
+  NODE_ENV: production
+  PORT: {{ requiredEnv "APP_PORT" }}

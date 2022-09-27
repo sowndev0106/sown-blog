@@ -1,0 +1,7 @@
+releaseNamespace: {{ env "KUBE_NAMESPACE" }}
+releaseName: {{ env "APP_LABEL" }}-{{ env "HELMFILE_ENV" }}
+podLabels:
+  gitCommitSha: {{ env "CI_COMMIT_SHA" }}
+  gitBranch: {{ env "CI_COMMIT_REF_NAME" }}
+  deployedBy: {{ env "GITLAB_USER_LOGIN" }}
+  environment: {{ .Environment.Name }}
