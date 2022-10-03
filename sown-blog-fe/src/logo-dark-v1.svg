@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2100" height="1500" viewBox="0 0 2100 1500">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 58.333px;
+        fill: #f9f9fa;
+        font-family: Montserrat;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        font-size: 500px;
+        fill: #161f38;
+        font-family: "Squada One";
+      }
+    </style>
+  </defs>
+  <g>
+    <image x="736" y="880" width="627" height="114" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnMAAAByCAYAAAA4c1eCAAACMklEQVR4nO3WQREAIRDAsOVE8MUG/o0dOjqTWOina5/7DwAASZ9sAABdZg4AIMzMAQCEmTkAgDAzBwAQZuYAAMLMHABAmJkDAAgzcwAAYWYOACDMzAEAhJk5AIAwMwcAEGbmAADCzBwAQJiZAwAIM3MAAGFmDgAgzMwBAISZOQCAMDMHABBm5gAAwswcAECYmQMACDNzAABhZg4AIMzMAQCEmTkAgDAzBwAQZuYAAMLMHABAmJkDAAgzcwAAYWYOACDMzAEAhJk5AIAwMwcAEGbmAADCzBwAQJiZAwAIM3MAAGFmDgAgzMwBAISZOQCAMDMHABBm5gAAwswcAECYmQMACDNzAABhZg4AIMzMAQCEmTkAgDAzBwAQZuYAAMLMHABAmJkDAAgzcwAAYWYOACDMzAEAhJk5AIAwMwcAEGbmAADCzBwAQJiZAwAIM3MAAGFmDgAgzMwBAISZOQCAMDMHABBm5gAAwswcAECYmQMACDNzAABhZg4AIMzMAQCEmTkAgDAzBwAQZuYAAMLMHABAmJkDAAgzcwAAYWYOACDMzAEAhJk5AIAwMwcAEGbmAADCzBwAQJiZAwAIM3MAAGFmDgAgzMwBAISZOQCAMDMHABBm5gAAwswcAECYmQMACDNzAABhZg4AIMzMAQCEmTkAgDAzBwAQZuYAAMLMHABAmJkDAAgzcwAAYWYOACDMzAEAhJk5AIAwMwcAEGbmAADCzBwAQJiZAwAIM3MAAFUz8wADAwJQCrXnOAAAAABJRU5ErkJggg=="/>
+    <text id="DEVELOPER" class="cls-1" x="813" y="957">DEVELOPER</text>
+  </g>
+  <text id="SOWN" class="cls-2" x="520" y="827">SOWN</text>
+</svg>

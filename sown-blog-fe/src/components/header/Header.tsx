@@ -11,16 +11,22 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import JavascriptIcon from "@mui/icons-material/Javascript";
 import SearchIcon from "@mui/icons-material/Search";
-import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 // import logo from "..//..//logo.svg";
-import { ReactComponent as Logo } from "..//..//logo.svg";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { ReactComponent as LogoDark } from "..//..//logo-dark-v1.svg";
+import { ReactComponent as LogoLight } from "..//..//logo-light-v1.svg";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import themeSlice, { changeTheme } from "../theme/themeSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import { isDOMComponent } from "react-dom/test-utils";
 
 const pages = ["Home", "Blog", "Project", "About me"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
+  const [isthemeDark, setIsthemeDark] = React.useState(false);
+  const dispatch = useAppDispatch();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -42,52 +48,28 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleChangeTheme = () => {
+    setIsthemeDark(!isthemeDark);
+    dispatch(changeTheme());
+  };
 
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Container>
         <Toolbar disableGutters>
-          <JavascriptIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+          <Box
             sx={{
               flexGrow: 1,
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              display: "flex",
               fontWeight: 800,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
-            {/* <Logo fill="black" stroke="yellow" /> */}
-            SOWN
-          </Typography>
-
-          {/* mini */}
-          <JavascriptIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            SOWN
-          </Typography>
+            {isthemeDark ? (
+              <LogoDark height="100px" width="200px" />
+            ) : (
+              <LogoLight height="100px" width="200px" />
+            )}
+          </Box>
 
           {/* Menu */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -109,8 +91,38 @@ const ResponsiveAppBar = () => {
                 {page}
               </Button>
             ))}
-            <IconButton sx={{ my: 2, mx: 2, color: "inherit" }}>
-              {true ? <Brightness7Icon /> : <Brightness4Icon />}
+            <Box
+              sx={{ my: 2, ml: 2, color: "inherit" }}
+              display="flex"
+              alignItems="center"
+            >
+              <Button
+                startIcon={<SearchIcon />}
+                sx={{
+                  textTransform: "none",
+                  width: "150px",
+                  fontStyle: "italic",
+                  fontWeight: "300",
+                  justifyContent: "flex-start",
+                  borderRadius: 3,
+                }}
+                size="small"
+                variant="outlined"
+                color="inherit"
+              >
+                Search...
+              </Button>
+            </Box>
+            <IconButton
+              color="primary"
+              sx={{
+                my: 2,
+                mx: 2,
+                color: "inherit",
+              }}
+              onClick={handleChangeTheme}
+            >
+              {isthemeDark ? <WbSunnyIcon /> : <NightlightIcon />}
             </IconButton>
           </Box>
 
@@ -148,10 +160,16 @@ const ResponsiveAppBar = () => {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
-              <Box>
-                <Button sx={{ my: 2, color: "inherit", display: "block" }}>
-                  <SearchIcon />
-                </Button>
+              <Box display="flex" justifyContent="center">
+                <IconButton
+                  sx={{ color: "inherit" }}
+                  onClick={handleChangeTheme}
+                >
+                  {isthemeDark ? <WbSunnyIcon /> : <NightlightIcon />}
+                </IconButton>
+                <IconButton sx={{ color: "inherit" }}>
+                  <SearchIcon></SearchIcon>
+                </IconButton>
               </Box>
             </Menu>
           </Box>

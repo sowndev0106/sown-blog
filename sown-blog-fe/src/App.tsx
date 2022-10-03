@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import IconButton from "@mui/material/IconButton";
-import Box from "@mui/material/Box";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Header from "./components/header/Header";
+import { useAppSelector } from "./redux/hooks";
+import { selectTheme } from "./components/theme/themeSlice";
 
 const themeLight = createTheme({
   palette: {
@@ -30,19 +31,14 @@ const themeDark = createTheme({
 });
 
 function App() {
-  const [isthemeDark, setIsthemeDark] = useState(true);
+  const theme = useAppSelector(selectTheme);
+  const [isthemeDark, setIsthemeDark] = useState(false);
+  console.log(theme);
   return (
     <div className="App">
-      <ThemeProvider theme={isthemeDark ? themeDark : themeLight}>
+      <ThemeProvider theme={theme == "dark" ? themeDark : themeLight}>
         <CssBaseline />
         <Header />
-        <IconButton
-          sx={{ ml: 1 }}
-          onClick={() => setIsthemeDark(!isthemeDark)}
-          color="inherit"
-        >
-          {isthemeDark ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
       </ThemeProvider>
     </div>
   );
