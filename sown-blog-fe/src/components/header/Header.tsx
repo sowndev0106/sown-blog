@@ -16,9 +16,8 @@ import { ReactComponent as LogoDark } from "..//..//logo-dark-v1.svg";
 import { ReactComponent as LogoLight } from "..//..//logo-light-v1.svg";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NightlightIcon from "@mui/icons-material/Nightlight";
-import themeSlice, { changeTheme } from "../theme/themeSlice";
+import { changeTheme } from "../theme/themeSlice";
 import { useAppDispatch } from "../../redux/hooks";
-import { isDOMComponent } from "react-dom/test-utils";
 
 const pages = ["Home", "Blog", "Project", "About me"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];

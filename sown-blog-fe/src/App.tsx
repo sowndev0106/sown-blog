@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
-import IconButton from "@mui/material/IconButton";
-import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Header from "./components/header/Header";
 import { useAppSelector } from "./redux/hooks";
 import { selectTheme } from "./components/theme/themeSlice";
+import Intro from "./components/home/Intro";
 
 const themeLight = createTheme({
   palette: {
@@ -39,6 +36,7 @@ function App() {
       <ThemeProvider theme={theme == "dark" ? themeDark : themeLight}>
         <CssBaseline />
         <Header />
+        <Intro />
       </ThemeProvider>
     </div>
   );
