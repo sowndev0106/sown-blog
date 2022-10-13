@@ -1,0 +1,78 @@
+:root {
+  --inset: 1vmin;
+  --color0: rgba(71, 199, 231, 0.281);
+  --color1: #222;
+  --duration: 5s;
+}
+
+.avatar {
+  block-size: 40vmin; 
+  inline-size: 40vmin;
+  display: grid;
+  place-items: center;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px black, 0 0 10px black;
+  filter: saturate(2);
+  
+  &::before {
+      content: '';
+      display: block;
+      inline-size: 100%;
+      block-size: 100%;
+      position: absolute;
+      background: repeating-conic-gradient(transparent, var(--color0) 25deg, var(--color1) 22.5deg, transparent 90deg);
+      animation: var(--duration) f linear infinite;
+      scale: 1.6;
+      @keyframes f {
+          0% { rotate: 0 }
+          100% { rotate: 1turn }
+      }
+  }
+}
+
+@supports not (rotate: 0deg) {
+  .com {
+      transform: rotate(45deg);
+      .th {
+          img {
+              transform: rotate(-45deg) scale(1.6);
+          }
+      }
+      &::before {
+          transform: scale(1.6);
+          animation-name: g;
+      }
+  }
+  @keyframes g {
+      0% { transform: rotate(0) scale(1.6) }
+      100% { transform: rotate(1turn) scale(1.6) }
+  }
+}
+
+.ring{
+  filter: drop-shadow(0 0 10px var(--color0)) ;
+  &::before, &::after{
+    animation-delay: 2s;
+    animation: pulse 4s linear infinite;
+    border: var(--color0) solid 2px;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    content: ' ';
+    height: 140%;
+    left: -20%;
+    opacity: .6;
+    position: absolute;
+    top: -20%;
+    transform: scale(0.714);
+    width: 140%;
+    z-index: 1;
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
