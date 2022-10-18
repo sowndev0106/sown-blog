@@ -1,13 +1,11 @@
 import {
   Avatar,
-  Container,
   Grid,
   Box,
   Typography,
   TextField,
   Button,
   Link,
-  makeStyles,
 } from "@mui/material";
 import style from "./Intro.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,10 +18,14 @@ import {
 import avatar from "..//..//assets/avatar.jpg";
 
 export default function Intro() {
-  console.log(process.env.PUBLIC_URL + "/avatar.jpg")
   return (
-    <Container>
-      <Grid container columns={12} spacing={10} sx={{ pt: 10, pb: 10 }}>
+      <Grid container columns={12} spacing={10} sx={{ height:"95vh", px:{
+        lg:20,
+        xl:20,
+        md:10,
+        sm:10,
+        xs:5
+      }, pb:10}}>
         <Grid
           item
           md={6}
@@ -39,7 +41,7 @@ export default function Intro() {
             },
           }}
         >
-          <Grid sx ={{display: "flex", flexDirection:"column", }}>
+          <Grid sx ={{display: "flex", flexDirection:"column"}}>
             <Typography
               sx={{
                 fontSize: {
@@ -50,8 +52,7 @@ export default function Intro() {
                 },
                 fontFamily: "-apple-system",
                 body: {
-                  fontWeight: 800,
-                  lineHeight: 1.2,
+                  fontWeight: 1800,
                 },
          
               }}
@@ -62,7 +63,8 @@ export default function Intro() {
             <Typography
               sx={{
                 mt:1,
-                fontSize: 20,
+                fontSize: 18,
+                fontWeight:400,
                 fontFamily: "-apple-system",
               }}
             >
@@ -88,30 +90,30 @@ export default function Intro() {
               </Button>
             </Box>
             {/* list icon follow me */}
-            <Box component="div" sx={{ pt: 3}}>
-              <Typography variant="caption" display="inline-list-item"  > 
+            <Box component="div" sx={{ pt: 3, display:"flex", alignItems:"center" }}>
+              <Typography variant="caption" display="inline-list-item" color={"secondary"} sx={{fontSize:15, fontWeight:500}} > 
                 Follow me:
-                <Link href="https://www.youtube.com/channel/UCsDgKKk7iBqBlCjJjlEScPg"  target="_blank" sx={{ml:2}}  color="inherit" variant="body2">
+              </Typography>
+              <Link href="https://www.youtube.com/channel/UCsDgKKk7iBqBlCjJjlEScPg"  target="_blank" sx={{ml:2}}  color="inherit" variant="h6">
                   <FontAwesomeIcon
                     icon={faYoutube}
                   />
                 </Link>
-                <Link href="https://fb.com/162001son"  target="_blank" sx={{ml:2}}  color="inherit" variant="body2">
+                <Link href="https://fb.com/162001son"  target="_blank" sx={{ml:2}}  color="inherit" variant="h6">
                   <FontAwesomeIcon
                     icon={faFacebook}
                   />
                 </Link>
-                <Link href="https://www.tiktok.com/@sown_dev"  target="_blank" sx={{ml:2}}  color="inherit" variant="body2">
+                <Link href="https://www.tiktok.com/@sown_dev"  target="_blank" sx={{ml:2}}  color="inherit" variant="h6">
                   <FontAwesomeIcon
                     icon={faTiktok}
                   />
                 </Link>
-                <Link href="https://www.linkedin.com/in/sowndev"  target="_blank" sx={{ml:2}}  color="inherit" variant="body2">
+                <Link href="https://www.linkedin.com/in/sowndev"  target="_blank" sx={{ml:2}}  color="inherit" variant="h6">
                   <FontAwesomeIcon
                     icon={faLinkedin}
                   />
                 </Link>
-              </Typography>
             </Box>
           </Grid>
         </Grid>
@@ -136,6 +138,5 @@ export default function Intro() {
           </Box>
         </Grid>
       </Grid>
-    </Container>
   );
 }
