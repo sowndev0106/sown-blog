@@ -12,8 +12,8 @@ console.log(style)
 export default function Intro() {
   return (
     <Container>
-      <Grid container columns={12} sx={{pt:10,pb:10}} >
-        <Grid item md={6}  sx={{ display:"flex",justifyContent:"left", alignItems:"center" }}>
+      <Grid container columns={12} spacing={10} sx={{pt:10,pb:10}} >
+        <Grid item md={6} xs={12}  sx={{display:"flex", justifyContent:"center", alignItems:"center"}} >
           <Grid>
           <Typography
             sx={{
@@ -32,10 +32,10 @@ export default function Intro() {
           </Description>
           </Grid>
         </Grid>
-        <Grid item  md={6}  sx={{display:"flex", justifyContent:"center"}}>
+        <Grid item  md={6} xs={12} sx={{display:"flex", justifyContent:"center",alignItems:"center"}} >
         <Box  component="div" className={style.ring}>
         <Box component="div" className={style.avatar} >
-            <Avatar sx={{ height: '99%', width: '99%' }} alt="Son" src="https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/286557850_1226246511245126_3981785525255104233_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=KNYHlRplDD8AX-tGr7f&_nc_ht=scontent.fdad5-1.fna&oh=00_AT_iwR6yVs6NBeqegHB1Je-_uhQ9IoYH62nPhR_tYgvZzw&oe=634CFBFB" />
+            <Avatar sx={{ height: '99%', width: '99%' }} alt="Son" src={process.env.PUBLIC_URL+"/avatar.jpg"} />
           </Box>
         </Box>
         </Grid>
