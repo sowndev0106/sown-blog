@@ -17,7 +17,7 @@ import {
   faYoutube,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-
+import avatar from "..//..//assets/avatar.jpg";
 
 export default function Intro() {
   console.log(process.env.PUBLIC_URL + "/avatar.jpg")
@@ -116,7 +116,7 @@ export default function Intro() {
               <Avatar
                 sx={{ height: "99%", width: "99%" }}
                 alt="Son"
-                src={process.env.PUBLIC_URL + "/avatar.jpg"}
+                src={avatar}
               />
             </Box>
           </Box>

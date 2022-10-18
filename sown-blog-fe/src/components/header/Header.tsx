@@ -11,7 +11,6 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import JavascriptIcon from "@mui/icons-material/Javascript";
 import SearchIcon from "@mui/icons-material/Search";
-// import logo from "..//..//logo.svg";
 import { ReactComponent as LogoDark } from "..//..//logo-dark-v1.svg";
 import { ReactComponent as LogoLight } from "..//..//logo-light-v1.svg";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
