@@ -7,6 +7,7 @@ import {
   TextField,
   Button,
   Link,
+  makeStyles,
 } from "@mui/material";
 import style from "./Intro.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,6 +17,7 @@ import {
   faYoutube,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+
 
 export default function Intro() {
   console.log(process.env.PUBLIC_URL + "/avatar.jpg")
