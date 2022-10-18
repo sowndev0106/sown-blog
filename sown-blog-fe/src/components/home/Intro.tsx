@@ -27,29 +27,41 @@ export default function Intro() {
         <Grid
           item
           md={6}
-          xs={12}
           sx={{
             display: "flex",
-            textAlign: "left",
-            justifyContent: "center",
             alignItems: "center",
+            textAlign: {
+              xs:"center",
+              sm:"center",
+              md:"center",
+              lg:"left",
+              xl:"left"
+            },
           }}
         >
-          <Grid>
+          <Grid sx ={{display: "flex", flexDirection:"column", }}>
             <Typography
               sx={{
-                fontSize: 50,
+                fontSize: {
+                  xl:"50px",
+                  lg:"45px",
+                  md:"40px",
+                  xs:"35px",
+                },
                 fontFamily: "-apple-system",
                 body: {
                   fontWeight: 800,
                   lineHeight: 1.2,
                 },
+         
               }}
             >
               Xin chào. Mình là Sơn
             </Typography>
+            
             <Typography
               sx={{
+                mt:1,
                 fontSize: 20,
                 fontFamily: "-apple-system",
               }}
@@ -58,23 +70,25 @@ export default function Intro() {
               Đây là blog cá nhân nơi chia sẽ những kiến thức, kinh nghiệm, đời
               sống của một developer là mình :v
             </Typography>
-            <Box component="div" sx={{ pt: 3, display: "flex" }}>
-              <TextField sx={{ mr: 3, width: 1 }} label="Email" />
+            <Box component="div" sx={{ pt: 3, display: "flex" ,width:{
+                md:"100%"
+            }}}>
+              <TextField sx={{ mr: 3 , flex:1 }} label="Email" />
               <Button
                 variant="contained"
                 sx={{
                   textTransform: "none",
                   color: "white",
                   background: "#0057FF",
-                  pl: 4,
-                  pr: 4,
+                  pl: 3,
+                  pr: 3,
                 }}
               >
                 Subscribe
               </Button>
             </Box>
             {/* list icon follow me */}
-            <Box component="div" sx={{ pt: 3 }}>
+            <Box component="div" sx={{ pt: 3}}>
               <Typography variant="caption" display="inline-list-item"  > 
                 Follow me:
                 <Link href="https://www.youtube.com/channel/UCsDgKKk7iBqBlCjJjlEScPg"  target="_blank" sx={{ml:2}}  color="inherit" variant="body2">
