@@ -18,6 +18,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Intro() {
+  console.log(process.env.PUBLIC_URL + "/avatar.jpg")
   return (
     <Container>
       <Grid container columns={12} spacing={10} sx={{ pt: 10, pb: 10 }}>
@@ -70,6 +71,7 @@ export default function Intro() {
                 Subscribe
               </Button>
             </Box>
+            {/* list icon follow me */}
             <Box component="div" sx={{ pt: 3 }}>
               <Typography variant="caption" display="inline-list-item"  > 
                 Follow me:
