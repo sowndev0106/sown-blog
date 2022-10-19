@@ -9,7 +9,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import JavascriptIcon from "@mui/icons-material/Javascript";
 import SearchIcon from "@mui/icons-material/Search";
 import { ReactComponent as LogoDark } from "..//..//logo-dark-v1.svg";
 import { ReactComponent as LogoLight } from "..//..//logo-light-v1.svg";
@@ -19,7 +18,6 @@ import { changeTheme } from "../theme/themeSlice";
 import { useAppDispatch } from "../../redux/hooks";
 
 const pages = ["Home", "Blog", "Project", "About me"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   const [isthemeDark, setIsthemeDark] = React.useState(false);
@@ -50,9 +48,8 @@ const ResponsiveAppBar = () => {
     setIsthemeDark(!isthemeDark);
     dispatch(changeTheme());
   };
-
   return (
-    <AppBar position="static" color="transparent" elevation={0}>
+    <AppBar position="static" color="transparent"  elevation={0} >
       <Container>
         <Toolbar disableGutters>
           <Box

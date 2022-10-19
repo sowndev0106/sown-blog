@@ -1,10 +1,10 @@
-import {  createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
-const colorLightMain = "#F9F9FA"
-const colorLightSecond = "#D4D4D7"
+const colorLightMain = "#F9F9FA";
+const colorLightSecond = "#E6EDF5";
 
-const colorDarkMain= "#272935" 
-const colorDarkSecond= "#8B8F9C" 
+const colorDarkMain = "#272935";
+const colorDarkSecond = "#8B8F9C";
 
 const themeLight = createTheme({
   palette: {
@@ -12,20 +12,20 @@ const themeLight = createTheme({
     background: {
       default: colorLightMain,
     },
-    common:{
+    common: {
       black: colorDarkMain,
-      white: colorLightMain
+      white: colorLightMain,
     },
-    primary:{
-      dark:colorDarkMain,
-      light:colorLightMain,
-      main:colorDarkMain,
+    primary: {
+      dark: colorDarkMain,
+      light: colorLightMain,
+      main: "#0452EA",
     },
-    secondary:{
-      dark:colorDarkSecond,
-      light:colorLightSecond,
-      main:colorDarkSecond,
-    }
+    secondary: {
+      dark: colorDarkSecond,
+      light: colorLightSecond,
+      main: colorLightSecond,
+    },
   },
 });
 
@@ -35,19 +35,19 @@ const themeDark = createTheme({
     background: {
       default: colorDarkMain,
     },
-    primary:{
-      dark:colorDarkMain,
-      light:colorLightMain,
-      main:colorDarkMain,
+    primary: {
+      dark: colorDarkMain,
+      light: colorLightMain,
+      main: "#0452EA",
     },
-    secondary:{
-      dark:colorDarkSecond,
-      light:colorLightSecond,
-      main:colorDarkSecond,
-    }
+    secondary: {
+      dark: colorDarkSecond,
+      light: colorLightSecond,
+      main: colorDarkSecond,
+    },
   },
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export  {themeLight, themeDark}
-export default  {themeLight, themeDark}
+export { themeLight, themeDark };
+export default { themeLight, themeDark };

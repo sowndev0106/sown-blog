@@ -19,13 +19,13 @@ import avatar from "..//..//assets/avatar.jpg";
 
 export default function Intro() {
   return (
-      <Grid container columns={12} spacing={10} sx={{ height:"95vh", px:{
+      <Grid container columns={12} spacing={10} sx={{ height:"90vh", px:{
         lg:20,
         xl:20,
         md:10,
         sm:10,
         xs:5
-      }, pb:10}}>
+      },mb:10}}>
         <Grid
           item
           md={6}

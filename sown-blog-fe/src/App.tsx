@@ -7,7 +7,6 @@ import { selectTheme } from "./components/theme/themeSlice";
 import Intro from "./components/home/Intro";
 import Posts from "./components/home/Posts";
 import { themeDark, themeLight} from "./theme"
-import {Container} from "@mui/material";
 
 
 
@@ -18,11 +17,8 @@ function App() {
       <ThemeProvider theme={theme === "dark" ? themeDark : themeLight}>
         <CssBaseline /> 
         <Header />
-        
-   
         <Intro />
         <Posts/>
-       
       </ThemeProvider>
     </div>
   );
