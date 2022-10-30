@@ -1,8 +1,18 @@
-import '@bootstrap/index'; // Must be the first import
-import app from '@bootstrap/app';
-// Start the server
-const port = Number(process.env.PORT || 3000);
+export default {
+  /**
+   * An asynchronous register function that runs before
+   * your application is initialized.
+   *
+   * This gives you an opportunity to extend code.
+   */
+  register(/*{ strapi }*/) {},
 
-app.listen(port, () => {
-	console.log(`Express server started on ${process.env.BASE_URL}`);
-});
+  /**
+   * An asynchronous bootstrap function that runs before
+   * your application gets started.
+   *
+   * This gives you an opportunity to set up your data model,
+   * run jobs, or perform some special logic.
+   */
+  bootstrap(/*{ strapi }*/) {},
+};

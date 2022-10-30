@@ -1,108 +1,36 @@
 {
-	"name": "backend-sample",
-	"version": "1.0.0",
-	"description": "Gangstar Online Backend",
-	"author": "",
-	"license": "ISC",
-	"scripts": {
-		"build": "node ./tools/scripts/build.js",
-		"start": "node -r module-alias/register ./dist",
-		"start:dev": "nodemon",
-		"deploy": "npm run start",
-		"lint:fix": "eslint ./src/**/*.ts --fix",
-		"lint:staged": "lint-staged",
-		"api:request:create": "node ./tools/scripts/create-request/index.js --module api --request "
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://git.gameloft.org/sai_deployment/marketing/k8s/backend-sample.git"
-	},
-	"nodemonConfig": {
-		"watch": [
-			"src"
-		],
-		"ext": "ts, html",
-		"ignore": [
-			"src/public"
-		],
-		"exec": "node --inspect -r ts-node/register -r tsconfig-paths/register ./src"
-	},
-	"lint-staged": {
-		"./src/**/*.ts": [
-			"prettier --write --config ./.prettierrc --ignore-path ./.prettierignore",
-			"eslint"
-		]
-	},
-	"_moduleAliases": {
-		"@modules": "dist/modules",
-		"@bootstrap": "dist/bootstrap",
-		"@infrastructure": "dist/modules/api/infrastructure"
-	},
-	"dependencies": {
-		"@googleapis/docs": "^0.4.1",
-		"@types/ejs": "^3.0.4",
-		"@types/express-flash": "0.0.2",
-		"@types/express-session": "^1.17.0",
-		"@types/lodash": "^4.14.161",
-		"@types/multer": "^1.4.5",
-		"@types/node-fetch": "^2.6.1",
-		"@types/nodemailer": "^6.4.0",
-		"axios": "^0.22.0",
-		"cookie-parser": "^1.4.5",
-		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"ejs": "^3.1.5",
-		"express": "^4.17.1",
-		"express-async-errors": "^3.1.1",
-		"express-flash": "0.0.2",
-		"express-session": "^1.17.0",
-		"fetch": "^1.1.0",
-		"find": "^0.3.0",
-		"fs-extra": "^9.0.3",
-		"glob": "^7.1.7",
-		"googleapis": "^100.0.0",
-		"helmet": "^4.6.0",
-		"inversify": "^5.0.1",
-		"jsonfile": "^6.0.1",
-		"jsonwebtoken": "^8.5.1",
-		"lodash": "^4.17.21",
-		"module-alias": "^2.2.2",
-		"mongoose": "^5.10.2",
-		"morgan": "^1.10.0",
-		"nodemailer": "^6.6.3",
-		"reflect-metadata": "^0.1.13",
-		"replace-in-file": "^6.2.0",
-		"winston": "^3.7.2",
-		"yargs": "^17.2.1"
-	},
-	"devDependencies": {
-		"@types/cookie-parser": "^1.4.2",
-		"@types/cors": "^2.8.7",
-		"@types/ejs": "^3.0.4",
-		"@types/express": "^4.17.8",
-		"@types/express-flash": "0.0.2",
-		"@types/express-session": "^1.17.0",
-		"@types/find": "^0.2.1",
-		"@types/fs-extra": "^9.0.3",
-		"@types/helmet": "0.0.48",
-		"@types/jasmine": "^3.5.14",
-		"@types/jsonfile": "^6.0.0",
-		"@types/jsonwebtoken": "^8.5.4",
-		"@types/mongoose": "^5.7.36",
-		"@types/morgan": "^1.9.1",
-		"@types/node": "^14.6.3",
-		"@types/supertest": "^2.0.10",
-		"@types/urlencode": "^1.1.2",
-		"@types/uuid": "^8.3.1",
-		"find": "^0.3.0",
-		"fs-extra": "^9.0.3",
-		"jasmine": "^3.6.1",
-		"jsonfile": "^6.0.1",
-		"nodemon": "^2.0.4",
-		"supertest": "^4.0.2",
-		"ts-node": "^9.0.0",
-		"tsconfig-paths": "^3.9.0",
-		"tslint": "^6.1.3",
-		"typescript": "^4.0.2"
-	}
+  "name": "sown-blog-be",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@_sh/strapi-plugin-ckeditor": "^1.1.2",
+    "@strapi/plugin-graphql": "4.4.5",
+    "@strapi/plugin-i18n": "4.4.5",
+    "@strapi/plugin-users-permissions": "4.4.5",
+    "@strapi/provider-upload-cloudinary": "^4.4.5",
+    "@strapi/strapi": "4.4.5",
+    "pg": "8.6.0",
+    "strapi-generate-plugin": "^3.6.10"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "a1ef296d-a674-4e4a-b23c-1386bfc7b007"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@gtomato/ckeditor5-strapi-upload-plugin": "^1.0.0"
+  }
 }
