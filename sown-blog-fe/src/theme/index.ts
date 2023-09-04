@@ -7,6 +7,7 @@ const colorDarkMain = "#272935";
 const colorDarkSecond = "#8B8F9C";
 
 const themeLight = createTheme({
+
   palette: {
     mode: "light",
     background: {
@@ -26,7 +27,10 @@ const themeLight = createTheme({
       light: colorLightSecond,
       main: colorLightSecond,
     },
+
   },
+
+
 });
 
 const themeDark = createTheme({

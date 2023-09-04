@@ -9,7 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import avatar from "..//..//assets/avatar.jpg";
 export default function Posts() {
   return (
     <Container component={"div"} sx={{ mb: 10, p: 5 }}>
@@ -60,7 +59,7 @@ export default function Posts() {
               xl: "5%",
             },
           }}
-          image={avatar}
+          image="\assets\avatar.jpg"
         />
         <Box
           sx={{

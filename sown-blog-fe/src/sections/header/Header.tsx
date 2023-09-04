@@ -14,12 +14,31 @@ import { ReactComponent as LogoDark } from "..//..//logo-dark-v1.svg";
 import { ReactComponent as LogoLight } from "..//..//logo-light-v1.svg";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NightlightIcon from "@mui/icons-material/Nightlight";
-import { changeTheme } from "../theme/themeSlice";
+import { changeTheme } from "../../components/theme/themeSlice";
 import { useAppDispatch } from "../../redux/hooks";
+import { Link as RouterLink } from 'react-router-dom'; // You'll need to install react-router-dom if not already done
+interface IPageNav {
+  name: string;
+  url: string
+}
+const pages: IPageNav[] = [
+  {
+    name: "Home",
+    url: "/"
+  },
+  {
+    name: "Blog",
+    url: "/blog"
+  }, {
+    name: "Resume",
+    url: "/resume"
+  }, {
+    name: "Project",
+    url: "/project"
+  }
+];
 
-const pages = ["Home", "Blog", "Project", "About me"];
-
-const ResponsiveAppBar = () => {
+const Header = () => {
   const [isthemeDark, setIsthemeDark] = React.useState(false);
   const dispatch = useAppDispatch();
 
@@ -49,7 +68,7 @@ const ResponsiveAppBar = () => {
     dispatch(changeTheme());
   };
   return (
-    <AppBar position="static" color="transparent"  elevation={0} >
+    <AppBar position="static" color="transparent" elevation={0} >
       <Container>
         <Toolbar disableGutters>
           <Box
@@ -69,8 +88,8 @@ const ResponsiveAppBar = () => {
           {/* Menu */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
+              <Button component={RouterLink} to={page.url}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
@@ -83,7 +102,7 @@ const ResponsiveAppBar = () => {
                   fontWeight: 600,
                 }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
             <Box
@@ -151,8 +170,10 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name}>
+                  <Typography textAlign="center" component={RouterLink} to={page.url}>
+                    {page.name}
+                  </Typography>
                 </MenuItem>
               ))}
               <Box display="flex" justifyContent="center">
@@ -173,4 +194,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Header;
