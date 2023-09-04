@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2100" height="1500" viewBox="0 0 2100 1500">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 58.333px;
+        fill: #f9f9fa;
+        font-family: Montserrat;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        font-size: 500px;
+        fill: #161f38;
+        font-family: "Squada One";
+      }
+    </style>
+  </defs>
+  
+  <text id="SOWN" class="cls-2" x="520" y="827">SOWN</text>
+</svg>

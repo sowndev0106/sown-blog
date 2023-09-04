@@ -1,18 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.d9e245c5.css",
-    "main.js": "/static/js/main.80d1da77.js",
+    "main.css": "/static/css/main.2066d5c0.css",
+    "main.js": "/static/js/main.fa2711c8.js",
     "static/js/787.a6610b2a.chunk.js": "/static/js/787.a6610b2a.chunk.js",
-    "static/media/avatar.jpg": "/static/media/avatar.e2b095f63f6d863c8156.jpg",
-    "static/media/logo-dark-v1.svg": "/static/media/logo-dark-v1.7b5b71ec36f15798b50b9c81898165be.svg",
-    "static/media/logo-light-v1.svg": "/static/media/logo-light-v1.e66483a655f12abb192f5783ec5220e8.svg",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.d75e3fd1eb12e9bd6655.ttf",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.016b4a6cdced82ab3aa1.ttf",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.b6879d41b0852f01ed5b.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.878f31251d960bd6266f.woff2",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.50701fbb8177c2dde530.ttf",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.c6a0c95b0a95c4553700.ttf",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.1bac2991f3dbfa237aec.woff2",
     "index.html": "/index.html",
-    "main.d9e245c5.css.map": "/static/css/main.d9e245c5.css.map",
-    "main.80d1da77.js.map": "/static/js/main.80d1da77.js.map",
+    "static/media/logo-dark-v1.svg": "/static/media/logo-dark-v1.c6c9562f3a71f40080c4057e0af7275b.svg",
+    "static/media/logo-light-v1.svg": "/static/media/logo-light-v1.f18f5262d4790d7f55c80a66bf180d4c.svg",
+    "main.2066d5c0.css.map": "/static/css/main.2066d5c0.css.map",
+    "main.fa2711c8.js.map": "/static/js/main.fa2711c8.js.map",
     "787.a6610b2a.chunk.js.map": "/static/js/787.a6610b2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9e245c5.css",
-    "static/js/main.80d1da77.js"
+    "static/css/main.2066d5c0.css",
+    "static/js/main.fa2711c8.js"
   ]
 }
