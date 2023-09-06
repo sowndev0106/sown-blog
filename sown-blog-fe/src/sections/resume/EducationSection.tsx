@@ -16,41 +16,33 @@ const Root = styled(Box)(({ theme }) => ({
 }));
 const contents = [
     {
-        title: 'NodeJs - APIs service',
-        details: [
-            "Developed user authorization and activity logging for APIs.",
-            "Integrated and improved functionalities in various projects.",
-            "Implemented APIs for subscription management and game code delivery via E- Mail.",
-            "Created a service to fetch and store posts from YouTube, Discord, and Facebook.",
-            "Designed and built backend systems for a Discord bot and CMS dashboard."
-        ],
+        title: 'GPA: 3.15 / 4.0.',
+        details: [],
     }, {
-        title: 'Discord bot ',
-        details: [
-            "Experienced in creating and managing Discord bots with diverse features.",
-            "Implemented message scheduling, feedback collection, and event handling from users.",
-            "Integrated interactive mini- games with leaderboards",
-        ],
+        title: 'Published scientific paper at YSC 2023 on "Developing a system for managing the final thesis course."',
+        details: [],
     }, {
-        title: 'CMS dashboard',
-        details: [
-            " Developed a CMS dashboard for Discord bots using React JS.",
-            "Configured and customized controllers in Strapi CMS."
-        ],
+        title: 'Member of the AI Lab, specializing in web backend and participating in volunteer activities.',
+        details: [],
+    }, {
+        title: 'Picked up user story gathering, analysis, and design with excellent documentation skills.',
+        details: [],
     }
 ];
 
-export default function ExperienceSection() {
+
+
+
+export default function EducationSection() {
     return (
 
         <Root>
-            <Typography variant='subtitle2' className='title'>Experience</Typography>
+            <Typography variant='subtitle2' className='title'>Education </Typography>
             <ExperienceCard
-                time='May 2022 - Present'
-                company='Gameloft - Web Marketing Team'
-                position='Backend Developer'
-                companyLogo='/assets/gameloft_logo.png'
-                companyLink='https://www.gameloft.com/gameloft-studios/saigon'
+                time='May 2019 - Aug 2023'
+                company='IUH - Industrial University of Ho Chi Minh City'
+                companyLink='https://iuh.edu.vn/en'
+                position='Software Engineering'
                 content={contents}
             />
         </Root>

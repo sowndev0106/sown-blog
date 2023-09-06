@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 162001
+    volumes:
+       - postgres:/data/postgres
+    # ports:
+    #   - "5432:5432"
+    networks:
+      - postgres
+    expose:
+      - 5432
+
+  strapi:
+    # image: strapi/strapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: database
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: 162001
+    volumes:
+      - appstrapi:/srv/app
+    ports:
+      - "1337:1337"
+    depends_on:
+      - database
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:
+    appstrapi:

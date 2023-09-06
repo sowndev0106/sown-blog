@@ -8,7 +8,6 @@ import {
     Link,
 } from "@mui/material";
 import style from "./Intro.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faFacebook,
     faTiktok,

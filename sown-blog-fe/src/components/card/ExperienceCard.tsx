@@ -61,7 +61,7 @@ const ExperienceCard = (props: IProps) => {
         <Card>
             <Box>
                 <Box className='header' component="div">
-                    <Typography gutterBottom variant="body1" component={RouterLink} to={props.companyLink || "#"} className='company-name' >
+                    <Typography gutterBottom variant="body1" component={RouterLink} to={props.companyLink || "#"} target='_blank' className='company-name' >
                         {props.company}
                     </Typography>
                     <Typography gutterBottom variant="caption" component="span" className='time' >
@@ -74,7 +74,7 @@ const ExperienceCard = (props: IProps) => {
                 <Box className='content' component="div">
                     {props.content.map((item, index) => {
                         return (<>
-                            <Typography gutterBottom variant="subtitle2" component="span" >
+                            <Typography gutterBottom variant="subtitle2" component="p" >
                                 ⚡  {item.title}
                             </Typography>
 
