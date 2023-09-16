@@ -16,7 +16,7 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NightlightIcon from "@mui/icons-material/Nightlight";
 import { changeTheme } from "../../components/theme/themeSlice";
 import { useAppDispatch } from "../../redux/hooks";
-import { Link as RouterLink } from 'react-router-dom'; // You'll need to install react-router-dom if not already done
+import { Link as RouterLink } from 'react-router-dom';
 interface IPageNav {
   name: string;
   url: string
@@ -28,7 +28,7 @@ const pages: IPageNav[] = [
   },
   {
     name: "Blog",
-    url: "/blog"
+    url: "/posts"
   }, {
     name: "Resume",
     url: "/resume"

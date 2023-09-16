@@ -13,7 +13,8 @@ export default function Router() {
                 <Route path="/" element={<Layout />} >
                     <Route index element={<HomePage />} />
                     <Route path="/resume" element={<ResumePage />} />
-                    <Route path="/post/*" element={<PostPage />} />
+                    <Route path="/posts/:slug" element={<PostPage />} />
+                    <Route path="/posts" element={<PostPage />} />
                     <Route path="*" element={< NotFoundPage />} />
                 </Route>
             </Routes>
