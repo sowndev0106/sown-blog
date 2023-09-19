@@ -4,6 +4,7 @@ import NotFoundPage from "./page/NotFoundPage";
 import Layout from "./layout/Layout";
 import ResumePage from "./page/ResumePage";
 import PostPage from "./page/PostPage";
+import ProjectPage from "./page/ProjectPage";
 
 
 export default function Router() {
@@ -15,6 +16,7 @@ export default function Router() {
                     <Route path="/resume" element={<ResumePage />} />
                     <Route path="/posts/:slug" element={<PostPage />} />
                     <Route path="/posts" element={<PostPage />} />
+                    <Route path="/projects" element={<ProjectPage />} />
                     <Route path="*" element={< NotFoundPage />} />
                 </Route>
             </Routes>

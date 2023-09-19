@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://nguyenthanhson162001.github.io/",
   "dependencies": {
+    "@apollo/client": "^3.8.3",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fontsource/roboto": "^4.5.8",
@@ -28,6 +29,7 @@
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
     "gh-pages": "^4.0.0",
+    "graphql": "^16.8.0",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "react": "^18.2.0",

@@ -19,17 +19,19 @@ interface IProps {
     technologies: string[];
     sx?: SxProps<Theme>
 }
+const Root = styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+}))
 const Card = styled("div")(({ theme }) => ({
     boxShadow: "rgba(0, 0, 0, 0.25) 0px 25px 20px -20px;",
     maxWidth: "350px",
     borderRadius: "10px",
     position: "relative",
-    // "& .action-icons": {
-    //     position: "absolute",
-    //     top: 5,
-    //     right: 10,
-    // }
-
+    "& .action-icons": {
+        display: "flex",
+        flexWrap: "nowrap"
+    },
     "& .head": {
         display: "flex",
         justifyContent: "space-between",
@@ -52,56 +54,56 @@ const BoxCardMedia = styled(Box)(({ theme }) => ({
 
 const SideProjectCard = (props: IProps) => {
     return (
-        <Card sx={{ ...props.sx, }}>
-            <BoxCardMedia >
-                <CardMedia component={RouterLink} to={props.link || props.github} target='_blank'
-                    sx={{ height: "100%", borderRadius: "10px" }}
-                    image={props.thumbnail}
-                    title="green iguana"
-                />
-            </BoxCardMedia>
-            <div>
-                <CardContent>
-                    <Box className='head'>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {props.name}
-                        </Typography>
-                        <Box className='action-icons'>
-                            {
-                                props.link &&
-                                <Tooltip title={"View on deployment"}>
-                                    <IconButton aria-label="share" component={RouterLink} to={props.link} target='_blank'>
-                                        <FontAwesomeIcon icon={faExternalLink} className='icon' />
+        <Root>
+            <Card sx={{ ...props.sx, }}>
+                <BoxCardMedia >
+                    <CardMedia component={RouterLink} to={props.link || props.github} target='_blank'
+                        sx={{ height: "100%", borderRadius: "10px" }}
+                        image={props.thumbnail}
+                        title="green iguana"
+                    />
+                </BoxCardMedia>
+                <div>
+                    <CardContent>
+                        <Box className='head'>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {props.name}
+                            </Typography>
+                            <Box className='action-icons'>
+                                <div>    {
+                                    props.link &&
+                                    <Tooltip title={"View on deployment"}>
+                                        <IconButton aria-label="share" component={RouterLink} to={props.link} target='_blank'>
+                                            <FontAwesomeIcon icon={faExternalLink} className='icon' />
+                                        </IconButton>
+                                    </Tooltip>
+                                }</div>
+
+                                <div> <Tooltip title={"View on github"}>
+                                    <IconButton aria-label="add to favorites" component={RouterLink} to={props.github} target='_blank'>
+                                        <FontAwesomeIcon icon={faGithub} className='icon' />
                                     </IconButton>
-                                </Tooltip>
-                            }
-
-                            <Tooltip title={"View on github"}>
-                                <IconButton aria-label="add to favorites" component={RouterLink} to={props.github} target='_blank'>
-
-                                    <FontAwesomeIcon icon={faGithub} className='icon' />
-                                </IconButton>
-                            </Tooltip>
+                                </Tooltip></div>
+                            </Box>
                         </Box>
-                    </Box>
-                    <Typography variant="body2" color="text.secondary">
-                        {props.description}
-                    </Typography>
-                    <Box sx={{ display: "flex", flexWrap: "wrap", marginTop: "10px" }}>
-                        {
-                            props.technologies.map((item, index) => (
-                                <Box key={index} sx={{ marginRight: "5px", marginBottom: "5px" }}>
-                                    <Chip label={item} variant="filled" color="info" sx={{ backgroundColor: "#192742", color: "white" }} size='medium' />
-                                    {/* <Button size='small' variant="contained" color="secondary" sx={{ backgroundColor: "#192742", textTransform: 'none' }} >{item} </Button> */}
-                                </Box>
-                            ))
-                        }
-                    </Box>
+                        <Typography variant="body2" color="text.secondary">
+                            {props.description}
+                        </Typography>
+                        <Box sx={{ display: "flex", flexWrap: "wrap", marginTop: "10px" }}>
+                            {
+                                props.technologies.map((item, index) => (
+                                    <Box key={index} sx={{ marginRight: "5px", marginBottom: "5px" }}>
+                                        <Chip label={item} variant="filled" color="info" sx={{ backgroundColor: "#192742", color: "white" }} size='medium' />
+                                        {/* <Button size='small' variant="contained" color="secondary" sx={{ backgroundColor: "#192742", textTransform: 'none' }} >{item} </Button> */}
+                                    </Box>
+                                ))
+                            }
+                        </Box>
 
-                </CardContent>
+                    </CardContent>
 
-            </div>
-        </Card>
+                </div>
+            </Card></Root>
     );
 }
 export default SideProjectCard;

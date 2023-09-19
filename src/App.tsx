@@ -11,7 +11,12 @@ import HomePage from "./page/HomePage";
 import Router from "./Router";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./fontawesome"
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
+const client = new ApolloClient({
+  uri: "https://graduation-thesis-iuh.top/graphql/",
+  cache: new InMemoryCache()
+});
 
 function App() {
   const theme = useAppSelector(selectTheme);
@@ -19,7 +24,9 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme === "dark" ? themeDark : themeLight}>
         <CssBaseline />
-        <Router />
+        <ApolloProvider client={client}>
+          <Router />
+        </ApolloProvider>,
       </ThemeProvider>
     </div>
   );

@@ -33,8 +33,8 @@ const pages: IPageNav[] = [
     name: "Resume",
     url: "/resume"
   }, {
-    name: "Project",
-    url: "/project"
+    name: "Projects",
+    url: "/projects"
   }
 ];
 
