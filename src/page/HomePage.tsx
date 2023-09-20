@@ -26,7 +26,7 @@ export default function HomePage() {
                 ABOUT ME
             </Typography>
             <Box component={RouterLink} to="/resume" target='_blank' sx={{ width: "100%", justifyContent: "center", display: "flex", textDecoration: "none", mt: 3 }}>
-                <Chip label="show my resume" variant='outlined' color='info' sx={{ borderColor: "#ff6723", color: "#ff6723", textDecoration: "none" }} />
+                <Chip label="Show my resume" variant='outlined' color='info' sx={{ borderColor: "#ff6723", color: "#ff6723", textDecoration: "none" }} />
             </Box>
 
         </Root>
