@@ -26,7 +26,7 @@ function App() {
         <CssBaseline />
         <ApolloProvider client={client}>
           <Router />
-        </ApolloProvider>,
+        </ApolloProvider>
       </ThemeProvider>
     </div>
   );

@@ -99,11 +99,11 @@ const SideProjectCard = (props: IProps) => {
                                 ))
                             }
                         </Box>
-
                     </CardContent>
 
                 </div>
-            </Card></Root>
+            </Card>
+        </Root>
     );
 }
 export default SideProjectCard;

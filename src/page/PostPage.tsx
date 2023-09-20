@@ -4,6 +4,8 @@ import { NotionRenderer } from "react-notion";
 import { useState, useEffect } from "react";
 import { Container, styled, Backdrop, CircularProgress, Typography, Divider, Chip } from "@mui/material";
 import { useParams, useSearchParams, redirect, Link as LinkRouter } from 'react-router-dom';
+import { ApolloProvider, ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
+import { GET_PROJECTS_QUERY } from "../queries/PostsQueries";
 
 export async function getStaticProps(notionPageId: string) {
     const data = await fetch(
@@ -23,6 +25,7 @@ const Root = styled(Container)(({ theme }) => ({
     textAlign: "left",
     fontFamily: "Nunito,sans-serif;",
     fontWeight: "200",
+    marginTop: "40px",
     '& .notion': {
         color: theme.palette.text.secondary,
     },
@@ -41,32 +44,34 @@ export default function PostPage() {
     let { slug } = useParams();
     const [blockMap, setBlockMap] = useState(null);
     const [otherPosts, setOtherPost] = useState<IPost[]>([]);
-    const [post, setPost] = useState<IPost>();
     const [openBackdrop, setOpenBackdrop] = useState(false);
-
-
-    useEffect(() => {
-        setOpenBackdrop(true);
-        fetchData()
-            .then((res) => {
-                setPost(res.post);
-                setOtherPost(res.otherPosts);
-                setBlockMap(res.blockMap);
-            })
-            .catch((err) => redirect("/404"))
-            .finally(() => setOpenBackdrop(false));
-    }, [])
-
-    const fetchData = async () => {
-        const [resPost, resOtherPost] = await Promise.all([mockDataPost(), mockDataOtherPosts()])
-        const resBlockMap = await getStaticProps(resPost.data.notionId)
-        return {
-            blockMap: resBlockMap,
-            post: resPost.data,
-            otherPosts: resOtherPost.data
+    const postRes = useQuery(GET_PROJECTS_QUERY, {
+        variables: {
+            slug: slug,
+            limit: 1
         }
-    }
+    });
+    const orderPostRes = useQuery(GET_PROJECTS_QUERY, {
+        variables: {
+            limit: 10,
+        }
+    });
+    useEffect(() => {
+        if (!postRes.loading) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            console.log(postRes.data)
+            setOpenBackdrop(true);
+            getStaticProps(postRes.data.posts.data[0].attributes.notionId)
+                .then((res) => {
+                    setBlockMap(res);
+                })
+                .catch((err) => redirect("/404"))
+                .finally(() => setOpenBackdrop(false));
+        }
+    }, [postRes.loading, slug])
 
+
+    console.log(orderPostRes.data)
     return (
         <Root maxWidth="md">
             <Backdrop
@@ -76,15 +81,16 @@ export default function PostPage() {
                 <CircularProgress color="inherit" />
             </Backdrop>
             {/* header title */}
-            <Typography variant="h3">
-                {post?.title}
+            <Typography variant="h4">
+                {postRes?.data?.posts?.data[0]?.attributes?.title}
             </Typography>
             {
-                post?.tags.map((tag, index) => (
+                postRes?.data?.posts?.data[0]?.attributes?.tags.data.map((value: any, index: number) => (
                     <TagChip
-                        label={tag}
+                        label={value.attributes.name}
                         variant="outlined"
                         size='small'
+                        key={index}
                         color="info" />
                 ))
             }
@@ -98,60 +104,19 @@ export default function PostPage() {
             <div>
                 <h1>Other post</h1>
                 {
-                    otherPosts.map((post, index) => (
-                        <div key={index}>
-                            <ol className="notion-list notion-list-disc">
-                                <li >
-                                    <LinkRouter to={`/posts/${post.slug}`} className="link-other-post">{post.title}</LinkRouter>
-                                </li>
-                            </ol>
-                            <div></div>
-                        </div>
+                    orderPostRes?.data?.posts?.data.map((post: any, index: number) => (
+                        post?.attributes?.slug === slug ? <></> :
+                            <div key={index}>
+                                <ol className="notion-list notion-list-disc">
+                                    <li >
+                                        <LinkRouter to={`/posts/${post?.attributes?.slug}`} className="link-other-post">{post?.attributes?.title}</LinkRouter>
+                                    </li>
+                                </ol>
+                                <div></div>
+                            </div>
                     ))
                 }
             </div>
         </Root>
     )
-}
-
-const mockDataPost = async (): Promise<{ data: IPost }> => {
-    return {
-        data: {
-            title: "Logger JS",
-            slug: "logger-js",
-            tags: ["JavaScript", "Logger", "Library"],
-            description: "A simple logger library for JavaScript",
-            notionId: "Logger-JS-1360e2df16e748cbbab9f7635f1c3108",
-            thumbnail: "http://localhost:3000/assets/avatar.jpg",
-        }
-    }
-}
-const mockDataOtherPosts = async (): Promise<{ data: IPost[] }> => {
-    return {
-        data: [
-            {
-                title: "Logger JS",
-                slug: "logger-js",
-                tags: ["JavaScript", "Logger", "Library"],
-                description: "A simple logger library for JavaScript",
-                notionId: "Logger-JS-1360e2df16e748cbbab9f7635f1c3108",
-                thumbnail: "http://localhost:3000/assets/avatar.jpg",
-            }, {
-                title: "Create and authorization discord bot",
-                slug: "create-and-authorization-discord-bot",
-                tags: ["JavaScript", "Logger", "Library"],
-                description: "A simple logger library for JavaScript",
-                notionId: "Logger-JS-1360e2df16e748cbbab9f7635f1c3108",
-                thumbnail: "http://localhost:3000/assets/avatar.jpg",
-            }, {
-                title: "Init project Discord bot",
-                slug: "init-project-discord-bot",
-                tags: ["JavaScript", "Logger", "Library"],
-                description: "A simple logger library for JavaScript",
-                notionId: "Logger-JS-1360e2df16e748cbbab9f7635f1c3108",
-                thumbnail: "http://localhost:3000/assets/avatar.jpg",
-            }
-
-        ]
-    }
 }
