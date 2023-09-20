@@ -1,25 +1,14 @@
-import "react-notion/src/styles.css";
-import "prismjs/themes/prism-tomorrow.css";
-import { NotionRenderer } from "react-notion";
 import { useState, useEffect } from "react";
 import { Container, styled, Backdrop, CircularProgress, Typography, Divider, Chip } from "@mui/material";
-import { useParams, useSearchParams, redirect, Link as LinkRouter } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
 import { GET_PROJECTS_QUERY } from "../queries/PostsQueries";
+import PostCard from "../components/card/PostCard";
 
 export async function getStaticProps(notionPageId: string) {
     const data = await fetch(
         `https://notion-api.splitbee.io/v1/page/${notionPageId}`
     ).then(res => res.json());
     return data
-}
-interface IPost {
-    title: string,
-    slug: string,
-    thumbnail: string,
-    description: string,
-    tags: string[],
-    notionId: string,
 }
 const Root = styled(Container)(({ theme }) => ({
     textAlign: "left",
@@ -36,87 +25,54 @@ const Root = styled(Container)(({ theme }) => ({
         color: "#58a6ff"
     }
 }));
-const TagChip = styled(Chip)(({ theme }) => ({
-    marginRight: "10px",
-    marginTop: "10px",
-}));
+
 export default function PostPage() {
-    let { slug } = useParams();
     const [blockMap, setBlockMap] = useState(null);
-    const [otherPosts, setOtherPost] = useState<IPost[]>([]);
-    const [openBackdrop, setOpenBackdrop] = useState(false);
-    const postRes = useQuery(GET_PROJECTS_QUERY, {
-        variables: {
-            slug: slug,
-            limit: 1
-        }
-    });
+
     const orderPostRes = useQuery(GET_PROJECTS_QUERY, {
         variables: {
             limit: 10,
         }
     });
-    useEffect(() => {
-        if (!postRes.loading) {
-            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-            console.log(postRes.data)
-            setOpenBackdrop(true);
-            getStaticProps(postRes.data.posts.data[0].attributes.notionId)
-                .then((res) => {
-                    setBlockMap(res);
-                })
-                .catch((err) => redirect("/404"))
-                .finally(() => setOpenBackdrop(false));
-        }
-    }, [postRes.loading, slug])
 
-
-    console.log(orderPostRes.data)
     return (
         <Root maxWidth="md">
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={openBackdrop}
+                open={orderPostRes.loading}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
             {/* header title */}
             <Typography variant="h4">
-                {postRes?.data?.posts?.data[0]?.attributes?.title}
+                List posts
             </Typography>
-            {
-                postRes?.data?.posts?.data[0]?.attributes?.tags.data.map((value: any, index: number) => (
-                    <TagChip
-                        label={value.attributes.name}
-                        variant="outlined"
-                        size='small'
-                        key={index}
-                        color="info" />
-                ))
-            }
 
             <Divider sx={{ mt: 2, mb: 4 }} />
 
-            {/* notion content */}
-            {blockMap && <NotionRenderer blockMap={blockMap} />}
+            {
+                orderPostRes.data && orderPostRes.data.posts.data.map((post: any) => {
+                    return (
+                        <>
+                            <PostCard
+                                key={post.id}
+                                title={post.attributes.title}
+                                description={post.attributes.description}
+                                slug={post.attributes.slug}
+                                thumbnail={post.attributes.thumbnail.data.attributes.url}
+                                createdAt={new Date(post.attributes.createdAt)}
+                                tags={post.attributes.tags.data.map((tag: any) => {
+                                    return { name: tag.attributes.name, slug: tag.attributes.slug }
+                                })}
+                                sx={{ mb: 4 }}
+                            />
+                        </>
+                    )
 
-            {/* other bot */}
-            <div>
-                <h1>Other post</h1>
-                {
-                    orderPostRes?.data?.posts?.data.map((post: any, index: number) => (
-                        post?.attributes?.slug === slug ? <></> :
-                            <div key={index}>
-                                <ol className="notion-list notion-list-disc">
-                                    <li >
-                                        <LinkRouter to={`/posts/${post?.attributes?.slug}`} className="link-other-post">{post?.attributes?.title}</LinkRouter>
-                                    </li>
-                                </ol>
-                                <div></div>
-                            </div>
-                    ))
-                }
-            </div>
+                })
+            }
+
+
         </Root>
     )
 }
