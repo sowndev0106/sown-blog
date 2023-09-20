@@ -58,7 +58,7 @@ export default function FeaturedProjectsSection() {
                 </ListProjects>
 
                 <Box component={RouterLink} to="/projects" target='_blank' sx={{ width: "100%", justifyContent: "center", display: "flex", textDecoration: "none", mt: 3 }}>
-                    <Chip label="Show more posts" variant='outlined' color='info' icon={<KeyboardArrowDownIcon />} sx={{ borderColor: "#ff6723", color: "#ff6723", textDecoration: "none" }} />
+                    <Chip label="Show more projects" variant='outlined' color='info' icon={<KeyboardArrowDownIcon />} sx={{ borderColor: "#ff6723", color: "#ff6723", textDecoration: "none" }} />
                 </Box>
 
             </Container>

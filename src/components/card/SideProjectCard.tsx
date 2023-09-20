@@ -22,6 +22,7 @@ interface IProps {
 const Root = styled("div")(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
+    textAlign: "left",
 }))
 const Card = styled("div")(({ theme }) => ({
     boxShadow: "rgba(0, 0, 0, 0.25) 0px 25px 20px -20px;",
