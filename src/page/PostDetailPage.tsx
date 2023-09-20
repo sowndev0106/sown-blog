@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Container, styled, Backdrop, CircularProgress, Typography, Divider, Chip } from "@mui/material";
 import { useParams, useSearchParams, redirect, Link as LinkRouter, useNavigate } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
-import { GET_PROJECTS_QUERY } from "../queries/PostsQueries";
+import { GET_POSTS_QUERY } from "../queries/PostsQueries";
 
 export async function getStaticProps(notionPageId: string) {
     const data = await fetch(
@@ -46,13 +46,13 @@ export default function PostPage() {
     const [otherPosts, setOtherPost] = useState<IPost[]>([]);
     const [openBackdrop, setOpenBackdrop] = useState(false);
     const navigate = useNavigate();
-    const postRes = useQuery(GET_PROJECTS_QUERY, {
+    const postRes = useQuery(GET_POSTS_QUERY, {
         variables: {
             slug: slug,
             limit: 1
         }
     });
-    const orderPostRes = useQuery(GET_PROJECTS_QUERY, {
+    const orderPostRes = useQuery(GET_POSTS_QUERY, {
         variables: {
             limit: 10,
         }

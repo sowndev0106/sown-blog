@@ -1,11 +1,10 @@
 import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Header from "./sections/header/Header";
+import Header from "./sections/layout/Header";
 import { useAppSelector } from "./redux/hooks";
 import { selectTheme } from "./components/theme/themeSlice";
 import Intro from "./sections/home/Intro";
-import Posts from "./sections/home/Posts";
 import { themeDark, themeLight } from "./theme"
 import HomePage from "./page/HomePage";
 import Router from "./Router";

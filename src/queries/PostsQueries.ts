@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-export const GET_PROJECTS_QUERY = gql`
-query getProject($slug: String, $limit: Int)# Write your query or mutation her
+export const GET_POSTS_QUERY = gql`
+query getPosts($slug: String, $limit: Int)# Write your query or mutation her
  {
   posts(filters:{slug:{eq:$slug}},pagination:{limit:$limit}){
     data{

@@ -16,6 +16,7 @@ const Root = styled(Container)(({ theme }) => ({
 }));
 
 export default function ProjectPage() {
+
     return (
         <Root>
             <title>Projects</title>

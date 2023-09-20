@@ -85,7 +85,7 @@ const Header = () => {
             )}
           </Box>
 
-          {/* Menu */}
+          {/* Menu desktop */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button component={RouterLink} to={page.url}
@@ -140,6 +140,8 @@ const Header = () => {
             </IconButton>
           </Box>
 
+
+          {/* menu mobile */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -171,7 +173,7 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page.name}>
-                  <Typography textAlign="center" component={RouterLink} to={page.url}>
+                  <Typography textAlign="center" component={RouterLink} to={page.url} sx={{ color: "text.primary", textDecoration: "none" }}>
                     {page.name}
                   </Typography>
                 </MenuItem>
@@ -191,7 +193,7 @@ const Header = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 export default Header;

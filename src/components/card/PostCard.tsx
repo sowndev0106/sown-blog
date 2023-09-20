@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, CardActions, Chip, styled } from "@mui/material";
+import { Box, CardActions, Chip, styled, Divider } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -25,10 +25,9 @@ interface IProps {
 }
 const TagChip = styled(Chip)(({ theme }) => ({
     marginRight: "10px",
-    marginTop: "10px",
-    marginBottom: "10px",
 }));
 const CCard = styled(Card)(({ theme }) => ({
+    fontFamily: "Work Sans",
     "& .link": {
         cursor: "pointer",
         textDecoration: "none",
@@ -72,7 +71,7 @@ export default function PostCard(props: IProps) {
                         xl: 250,
                         md: 250,
                     },
-                    mr: 3,
+                    mr: 1,
                     maxHeight: {
                         lg: 300,
                         xl: 300,
@@ -92,23 +91,23 @@ export default function PostCard(props: IProps) {
                     display: "flex",
                     flexDirection: "column",
                     textAlign: "left",
+                    width: "100%"
                 }}
             >
-                <CardContent onClick={() => handlerRedirect()}>
+                <CardContent onClick={() => handlerRedirect()} sx={{ width: "100%" }}>
                     <Typography
                         component="div"
-                        variant="h5"
+                        variant="h6"
                         className="link"
-                        sx={{ fontFamily: "Work Sans", fontWeight: 600, color: "#fff" }}
                     >
                         {props.title}
                     </Typography>
                     <Typography
-                        variant="subtitle1"
+                        variant="subtitle2"
                         color="text.secondary"
                         component="div"
                         className="link"
-                        sx={{ fontFamily: "Work Sans" }}
+                        sx={{ fontWeight: 200, mb: 2 }}
                     >
                         {props.description}
                     </Typography>
@@ -120,27 +119,18 @@ export default function PostCard(props: IProps) {
                             key={tag.slug}
                             color="info" />)
                     }
+                    <Divider sx={{ mt: 2 }} variant="fullWidth" />
                     <Typography
                         variant="caption"
                         display="block"
-                        color="secondary"
-                        gutterBottom
+                        color="text.secondary"
+                        sx={{ opacity: 0.6, mt: 1 }}
                     >
                         {props.createdAt.toDateString()}
                     </Typography>
                 </CardContent>
 
-                <CardActions
-                    disableSpacing
-                    sx={{ borderTop: 1, borderColor: "rgb(163 176 189 / 20%)" }}
-                >
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                        <ShareIcon />
-                    </IconButton>
-                </CardActions>
+
             </Box>
         </CCard >
     );

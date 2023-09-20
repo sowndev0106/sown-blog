@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, styled, Backdrop, CircularProgress, Typography, Divider, Chip } from "@mui/material";
 import { ApolloProvider, ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
-import { GET_PROJECTS_QUERY } from "../queries/PostsQueries";
+import { GET_POSTS_QUERY } from "../queries/PostsQueries";
 import PostCard from "../components/card/PostCard";
 
 export async function getStaticProps(notionPageId: string) {
@@ -27,19 +27,17 @@ const Root = styled(Container)(({ theme }) => ({
 }));
 
 export default function PostPage() {
-    const [blockMap, setBlockMap] = useState(null);
-
-    const orderPostRes = useQuery(GET_PROJECTS_QUERY, {
+    const postsRes = useQuery(GET_POSTS_QUERY, {
         variables: {
             limit: 10,
         }
     });
 
     return (
-        <Root maxWidth="md">
+        <Root maxWidth="xl">
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={orderPostRes.loading}
+                open={postsRes.loading}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
@@ -51,7 +49,7 @@ export default function PostPage() {
             <Divider sx={{ mt: 2, mb: 4 }} />
 
             {
-                orderPostRes.data && orderPostRes.data.posts.data.map((post: any) => {
+                postsRes.data && postsRes.data.posts.data.map((post: any) => {
                     return (
                         <>
                             <PostCard
