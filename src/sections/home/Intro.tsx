@@ -107,6 +107,7 @@ export default function Intro() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    overflow: "hidden",
                 }}
             >
                 <Box component="div" className={style.ring}>
