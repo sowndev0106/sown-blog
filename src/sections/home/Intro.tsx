@@ -73,7 +73,7 @@ export default function Intro() {
                         Đây là blog cá nhân nơi chia sẽ những kiến thức, kinh nghiệm, đời
                         sống của một developer là mình :v
                     </Typography>
-                    <Link target="_blank" href="https://www.canva.com/design/DAFmtfI4FZo/ACMKP25tefVk8MZdLJcCNw/edit?utm_content=DAFmtfI4FZo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" color="inherit" >
+                    <Link target="_blank" href="/resume" color="inherit" >
                         My resume
                     </Link>
                     <Box component="div" sx={{

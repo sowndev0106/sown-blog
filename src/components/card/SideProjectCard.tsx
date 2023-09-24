@@ -40,7 +40,7 @@ const Card = styled("div")(({ theme }) => ({
     "& .icon": {
         // color: "#00bdf2",
         color: "#ff6723",
-        fontSize: "1rem",
+        fontSize: "1rem"
     }
 }))
 const BoxCardMedia = styled(Box)(({ theme }) => ({
