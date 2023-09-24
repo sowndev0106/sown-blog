@@ -58,7 +58,7 @@ export default function Intro() {
 
                         }}
                     >
-                        Xin chào. Mình là Sơn
+                        Hello. My name is Son
                     </Typography>
 
                     <Typography
@@ -69,9 +69,7 @@ export default function Intro() {
                             fontFamily: "-apple-system",
                         }}
                     >
-                        Hiện tại mình đang làm Backend developer - Node JS tại Gameloft.
-                        Đây là blog cá nhân nơi chia sẽ những kiến thức, kinh nghiệm, đời
-                        sống của một developer là mình :v
+                        I am currently working as a Backend Developer - Node.js at Gameloft. This is my personal website where I share knowledge, experiences, and the life of a developer like myself :v
                     </Typography>
                     <Link target="_blank" href="/resume" color="inherit" >
                         My resume
