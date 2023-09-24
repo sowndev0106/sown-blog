@@ -128,7 +128,7 @@ export default function ResumePage() {
                                     <div className='contact-icons'>
                                         <ContactIcons />
                                     </div>
-                                    <Box component={RouterLink} to="https://export-download.canva.com/I4FZo/DAFmtfI4FZo/132/0-2335518304602482498.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20230904%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230904T015837Z&X-Amz-Expires=79623&X-Amz-Signature=251c2effa33a787890ba3abaca3eea08992d45394442a7a916f2823e43cf70a4&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27CV-2023.pdf&response-expires=Tue%2C%2005%20Sep%202023%2000%3A05%3A40%20GMT">
+                                    <Box component={RouterLink} to="/assets/NguyenThanhSon-CV-2023.pdf" target='_blank'>
                                         <Button color='secondary' variant='outlined' size='small'>
                                             <DownloadIcon /> Download My CV
                                         </Button>

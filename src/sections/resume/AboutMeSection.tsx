@@ -71,7 +71,7 @@ export default function AboutMe() {
                     <span className='text'>Go Vap, Ho Chi Minh</span>
                 </div>
             </Contacts>}
-            <Typography variant='subtitle1' className='sub-title'>Seeking a challenging position as a Backend Developer, applying my software engineering expertise in development, design, and product maintenance to meet user needs. Eager to collaborate effectively with teams and contribute to organizational success while fostering personal growth.</Typography>
+            <Typography variant='subtitle1' className='sub-title'>I am a backend programmer with the capability to work in the frontend as well. I have experience participating in the deployment and design of backend services and databases. I am not afraid to learn and am always ready to face new challenges. Currently, I am seeking a challenging opportunity to contribute my value to both organizations and society.</Typography>
         </Root>
     );
 }
