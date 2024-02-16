@@ -62,10 +62,10 @@ reverse-proxy:
 
   script:
     - echo "reverse proxy to production"
-
-    - $SSH_WORKSPACE cd reverse-proxy && docker-compose down 
-    - $SSH_WORKSPACE cd reverse-proxy && docker-compose build
-    - $SSH_WORKSPACE cd reverse-proxy && docker-compose  up -d
+    
+    - $SSH_WORKSPACE_REVERSE_PROXY docker-compose down 
+    - $SSH_WORKSPACE_REVERSE_PROXY docker-compose build
+    - $SSH_WORKSPACE_REVERSE_PROXY docker-compose up -d
 
     - $SSH docker ps -a
   services:
