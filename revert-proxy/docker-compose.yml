@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  revert-proxy:
+    container_name: revert-proxy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+
+  
