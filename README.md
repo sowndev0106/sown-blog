@@ -44,3 +44,33 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+#     server {
+#     listen 443 ssl;
+#     server_name demo.demo.com;
+
+#     ssl_certificate /etc/nginx/ssl/demo/fullchain.pem;
+#     ssl_certificate_key /etc/nginx/ssl/demo/privkey.pem;
+
+#     location / {
+#       proxy_pass http://demo_frontend;
+#       add_header Cache-Control 'no-store, no-cache';
+#       proxy_set_header Host $host;
+#       proxy_set_header X-Real-IP $remote_addr;
+#       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#       proxy_set_header X-Forwarded-Proto $scheme;
+#     }
+#     location /api {
+#         proxy_pass http://demo_backend:14441;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#     }
+#     location ~ /\.(?!well-known).* {
+#         deny all;
+#     }
+
+# }
