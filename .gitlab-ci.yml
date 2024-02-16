@@ -36,8 +36,12 @@ deploy-prod:
 
     # check if don't have source code => clone. else => pull
     - $SSH "[ -d sown-blog ]  && echo repository already exist || git clone https://gitlab.com/sowndev/sown-blog.git "
-    - $SSH cd sown-blog && git reset --hard && git pull origin master
-
+    - SSH_WORKSPACE && pwd
+  
+    - SSH_WORKSPACE && git reset --hard 
+  
+    - SSH_WORKSPACE && git pull origin master
+  
     - $SSH_WORKSPACE docker-compose down
     - $SSH_WORKSPACE docker-compose  up -d
 
