@@ -9,18 +9,18 @@ variables:
   SSH_WORKSPACE:  ssh -o StrictHostKeyChecking=no -i "$RSA_SOWN_BLOG_STRAPI" $VPS_USER@$VPS_HOST cd sown-blog &&
 
 
-# build-job:
-#   stage: build
-#   image: docker:24.0.5
-#   script:
-#     - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASSWORD
-#     - docker build -t $DOCKER_REGISTRY:$APP_VERSION .
-#     - docker tag $DOCKER_REGISTRY:$APP_VERSION $DOCKER_REGISTRY:latest
-#     - docker push $DOCKER_REGISTRY:latest
-#     - docker push $DOCKER_REGISTRY:$APP_VERSION
-#     - echo "build job"
-#   services:
-#     - docker:dind
+build-job:
+  stage: build
+  image: docker:24.0.5
+  script:
+    - docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PASSWORD
+    - docker build -t $DOCKER_REGISTRY:$APP_VERSION .
+    - docker tag $DOCKER_REGISTRY:$APP_VERSION $DOCKER_REGISTRY:latest
+    - docker push $DOCKER_REGISTRY:latest
+    - docker push $DOCKER_REGISTRY:$APP_VERSION
+    - echo "build job"
+  services:
+    - docker:dind
 
 deploy-prod:
   stage: deploy
