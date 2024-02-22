@@ -69,7 +69,7 @@ export default function Intro() {
                             fontFamily: "-apple-system",
                         }}
                     >
-                        I am currently working as a Backend Developer - Node.js at Gameloft. This is my personal website where I share knowledge, experiences, and the life of a developer like myself :v
+                        I am currently working as a Backend Developer. This is my personal website where I share knowledge, experiences, and the life of a developer like myself :v
                     </Typography>
                     <Link target="_blank" href="/resume" color="inherit" >
                         My resume
