@@ -5,6 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+// react -notion
+import 'react-notion-x/src/styles.css'
+import 'prismjs/themes/prism-tomorrow.css'
+import 'katex/dist/katex.min.css'
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

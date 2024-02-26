@@ -3,9 +3,11 @@ import "prismjs/themes/prism-tomorrow.css";
 import { NotionRenderer } from "react-notion";
 import { useState, useEffect } from "react";
 import { Container, styled, Backdrop, CircularProgress, Typography, Divider, Chip } from "@mui/material";
-import { useParams, useSearchParams, redirect, Link as LinkRouter, useNavigate } from 'react-router-dom';
-import { ApolloProvider, ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
+import { useParams,Link as LinkRouter, useNavigate } from 'react-router-dom';
+import {  useQuery } from "@apollo/client";
 import { GET_POSTS_QUERY } from "../queries/PostsQueries";
+import ReactNotionRenderer from "../components/notion/ReactNotionRenderer";
+// you can optionally pass an authToken to access private notion resources
 
 export async function getStaticProps(notionPageId: string) {
     const data = await fetch(
@@ -64,10 +66,13 @@ export default function PostPage() {
             setOpenBackdrop(true);
             getStaticProps(postRes.data.posts.data[0].attributes.notionId)
                 .then((res) => {
+                    console.log(res)
                     setBlockMap(res);
                 })
                 .catch((err) => navigate("/404"))
                 .finally(() => setOpenBackdrop(false));
+
+
         }
     }, [postRes.loading, slug])
 
@@ -98,7 +103,8 @@ export default function PostPage() {
             <Divider sx={{ mt: 2, mb: 4 }} />
 
             {/* notion content */}
-            {blockMap && <NotionRenderer blockMap={blockMap} />}
+            {/* {blockMap && <NotionRenderer blockMap={blockMap} />} */}
+            {blockMap && <ReactNotionRenderer recordMap={{block:blockMap}} />}
 
             {/* other bot */}
             <div>

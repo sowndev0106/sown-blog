@@ -45,7 +45,7 @@ deploy-prod:
   
     - $SSH_WORKSPACE docker-compose down
 
-    - $SSH_WORKSPACE docker-compose  up -d --argu VERSION=$APP_VERSION
+    - $SSH_WORKSPACE docker-compose  up -d 
 
     - $SSH docker ps -a
   environment: production
