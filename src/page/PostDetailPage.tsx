@@ -103,8 +103,8 @@ export default function PostPage() {
             <Divider sx={{ mt: 2, mb: 4 }} />
 
             {/* notion content */}
-            {/* {blockMap && <NotionRenderer blockMap={blockMap} />} */}
-            {blockMap && <ReactNotionRenderer recordMap={{block:blockMap}} />}
+            {blockMap && <NotionRenderer blockMap={blockMap} />}
+            {/* {blockMap && <ReactNotionRenderer recordMap={{block:blockMap}} />} */}
 
             {/* other bot */}
             <div>
