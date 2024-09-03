@@ -47,7 +47,7 @@ export default function FeaturedProjectsSection() {
                                             github={project.attributes.github}
                                             name={project.attributes.name}
                                             technologies={project.attributes.tags.data?.map((technology: any) => (technology.attributes.name))}
-                                            thumbnail={project.attributes.thumbnail.data.attributes.url}
+                                            thumbnail={`https://cms.sowndev.com${project.attributes.thumbnail.data.attributes.url}`}
                                         />
                                     </Grid>
                                 )

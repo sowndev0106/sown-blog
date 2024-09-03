@@ -1,9 +1,9 @@
-version: '3.1'
+version: "3.1"
 
 services:
   blog:
-    # image: son162001/sown-blog:latest
     build: .
+    image: son162001/sown-blog:latest
     restart: always
     ports:
-      - "3000:80"
+      - "3001:80"

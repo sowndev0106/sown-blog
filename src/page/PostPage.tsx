@@ -57,7 +57,7 @@ export default function PostPage() {
                                 title={post.attributes.title}
                                 description={post.attributes.description}
                                 slug={post.attributes.slug}
-                                thumbnail={post.attributes.thumbnail.data.attributes.url}
+                                thumbnail={`https://cms.sowndev.com${post.attributes.thumbnail.data.attributes.url}`}
                                 createdAt={new Date(post.attributes.createdAt)}
                                 tags={post.attributes.tags.data.map((tag: any) => {
                                     return { name: tag.attributes.name, slug: tag.attributes.slug }

@@ -13,7 +13,7 @@ import "./fontawesome"
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://strapi.sowndev.com/graphql/",
+  uri: "https://cms.sowndev.com/graphql/",
   cache: new InMemoryCache()
 });
 

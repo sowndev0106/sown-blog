@@ -8,21 +8,5 @@ COPY . .
 RUN yarn
 RUN yarn build
 
-# # production stage
-# FROM nginx:alpine
-
-# # Copy the built React app to Nginx's web server directory
-# COPY --from=build /app/build /usr/share/nginx/html
-
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# # Expose port 80 for the Nginx server
-# EXPOSE 80
-
-# # Start Nginx when the container runs
-# CMD ["nginx", "-g", "daemon off;"]
-
-
-
 RUN npm i -g serve
 CMD ["serve", "-s", "build", "-l", "80"]
