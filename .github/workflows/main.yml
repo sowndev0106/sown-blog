@@ -108,4 +108,4 @@ jobs:
             docker compose up -d  
             docker ps            
             # clear docker images
-            # docker rmi $(docker images | grep '${{ env.DOCKER_REPO }}')
+            docker rmi $(docker images | grep '${{ env.DOCKER_REPO }}') || true
