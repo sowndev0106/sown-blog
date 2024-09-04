@@ -7,8 +7,7 @@ on:
     branches: [ "master" ]
 
 env:
-  WORKPLACE_APP: ~/app/cms-sown
-  DOCKER_REPO: son162001/cms-sown
+  WORKPLACE_APP: ~/app/sown-blog
 
 jobs:
   build:
@@ -59,7 +58,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_REPO }}:${{ env.tag }}
+          tags: ${{ vars.DOCKER_REPO }}:${{ env.tag }}
 
   deploy_develop:
     name: Deploy to develop
@@ -84,7 +83,7 @@ jobs:
         run: | 
           echo "Creating .env file from ENV_VARS..."
           echo "$ENV_VARS" | jq -r 'to_entries | .[] | "\(.key)=\(.value)"' > .env
-          echo -e "DOCKER_REGISTRY_IMAGE=${{ env.DOCKER_REPO }}:${{ env.TAG }}" >> .env
+          echo -e "DOCKER_REGISTRY_IMAGE=${{ vars.DOCKER_REPO }}:${{ env.TAG }}" >> .env
 
       - name: Copy files to remote server
         uses: appleboy/scp-action@v0.1.3
@@ -108,4 +107,4 @@ jobs:
             docker compose up -d  
             docker ps            
             # clear docker images
-            docker rmi $(docker images | grep '${{ env.DOCKER_REPO }}') || true
+            docker rmi $(docker images | grep '${{ vars.DOCKER_REPO }}') || true
