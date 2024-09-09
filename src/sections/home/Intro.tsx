@@ -43,9 +43,9 @@ export default function Intro() {
         "6LfxNDgqAAAAAF42eyDgiINdfRmdWDD0YD2LnDXZ",
         { action: "submit" }
       );
-
+      //https://strapi.sowndev.com
       const response = await fetch(
-        "https://strapi.sowndev.com/api/subscribers/subscribe",
+        "https://cms.sowndev.com/api/subscribers/subscribe",
         {
           method: "POST",
           headers: {
