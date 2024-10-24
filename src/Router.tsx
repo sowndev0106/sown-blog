@@ -6,6 +6,7 @@ import ResumePage from "./page/ResumePage";
 import ProjectPage from "./page/ProjectPage";
 import PostDetailPage from "./page/PostDetailPage";
 import PostPage from "./page/PostPage";
+import AdsPage from "./page/AdsPage";
 
 
 export default function Router() {
@@ -18,6 +19,7 @@ export default function Router() {
                     <Route path="/posts/:slug" element={<PostDetailPage />} />
                     <Route path="/posts" element={<PostPage />} />
                     <Route path="/projects" element={<ProjectPage />} />
+                    <Route path="/ads" element={<AdsPage />} />
                     <Route path="*" element={< NotFoundPage />} />
                 </Route>
             </Routes>
